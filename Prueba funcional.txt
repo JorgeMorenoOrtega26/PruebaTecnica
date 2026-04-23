@@ -1,0 +1,50 @@
+1. Escritura de los casos de prueba para validar esa US.
+Seleccion y deseleccion de un elemento
+Seleccion y deseleccion de varios elementos
+Comprobar que el boton borrar está deshabilitado sin seleccionar elementos
+Seleccionar y borrar elementos de la tabla
+Comprobación de mensaje al borrar los datos
+Ordenar lista por columnas
+
+2. De los casos anteriores, elige 2 para escribir en BDD Gherkin
+Background: Login de usuario
+	Given Introducimos los datos del usuario y hacemos login
+	Then Tabla presentada ante el usuario
+
+Scenario outline: Seleccionar y borrar elementos de la tabla
+	Given El <elemento> existe en la tabla
+	When Seleccionamos <elemento> a borrar y hacemos click en el boton borrar
+	Then Comprobamos que <elemento> no existe en la tabla
+	Examples:
+	| elemento |
+	| atributo |
+
+Scenario: Ordenar lista por columnas
+	Given Existen elementos en la tabla
+	When Seleccionamos el campo 1
+	Then Se ordena basado en el criterio de la columna
+	When Seleccionamos el campo 1
+	Then Se ordena en sentido inverso
+
+3. Teniendo en cuenta que esta US tiene implementación de frontend y de backend, comenta qué herramientas utilizarías para validar esta US en cada disciplina de forma manual.
+Para frontend, utilizaría Cypress o DevTools del navegador. Para backend utilizaría cualquier aplicación de pruebas API como Postman, SoapUI o RestAssured
+
+4. Como paso final, nos gustaría incorporar la validación de este nuevo caso de uso en nuestro plan automático de regresión. ¿Qué herramientas utilizarías para automatizar?
+Utilizaría el framework que se utilice en el proyecto, ya sea Cucumber, Selenium o Pytest. Una vez automatizada la prueba se subiría a la pipeline de Jenkins donde tenemos el job preparado para poder lanzarlo y tener los informes listos.
+
+5. ¿Qué tipos de pruebas conoces? Pon un ejemplo de donde utilizarías cada una de ellas.
+End-to-end tests, para probar la parte front de la web como un usuario más.
+Load tests, se revisa como se comporta la página web ante cierta carga de conexiones.
+Smoke tests, lo utilizaría para probar secciones vitales de la plataforma.
+API tests, para comprobar que los servicios dan la respuesta esperada al realizar las llamadas.
+Tests de regresión, se verifica que los nuevos desarrollos no alteran anteriores desarrollos o secciones de la aplicacion, revisable fácilmente con informes diarios de los tests de automatización subidos a la pipeline.
+Unit tests, para revisar que las 
+
+6. Siendo tu rol de QA, ¿qué buenas prácticas utilizas o utilizarías?
+Revisión y mantenimiento de los tests existentes.
+Código limpio y comentado.
+Utilizar Page Object Model.
+Reporte inmediato de bugs con la mayor cantidad posible de informacion (pasos, fotos y vídeos)
+Constante contacto con desarrolladores.
+Por más que la web/aplicación de un OK, revisar la BBDD/APIs para confirmar que la confirmación es correcta.
+Revisar prioridades de tareas para centrar la atención en lo más importante.
